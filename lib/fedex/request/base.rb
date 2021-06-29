@@ -50,7 +50,12 @@ module Fedex
       def initialize(credentials, options={})
         requires!(options, :shipper, :recipient, :packages)
         @credentials = credentials
-        @shipper, @recipient, @packages, @service_type, @customs_clearance_detail, @debug = options[:shipper], options[:recipient], options[:packages], options[:service_type], options[:customs_clearance_detail], options[:debug]
+        @shipper = options[:shipper]
+        @recipient = options[:recipient]
+        @packages  = options[:packages]
+        @service_type = options[:service_type]
+        @customs_clearance = options[:customs_clearance]
+        @smartpost_details = options[:smartpost_details]
         @origin = options[:origin]
         @debug = ENV['DEBUG'] == 'true'
         @shipping_options =  options[:shipping_options] ||={}
